@@ -45,19 +45,11 @@ func (b BlurryDetection) commandAvailable() bool {
 	cmd := exec.Command("identify", "-version")
 	_, err := cmd.Output()
 
-	if err != nil {
-		return false
-	}
-
-	return true
+	return err == nil
 }
 
 func (b BlurryDetection) validate(ImagePath string) bool {
-	if len(strings.Split(ImagePath, " ")) != 1 {
-		return false
-	}
-
-	return true
+	return len(strings.Split(ImagePath, " ")) != 1
 }
 
 func (b BlurryDetection) run(ImagePath string) (string, error) {

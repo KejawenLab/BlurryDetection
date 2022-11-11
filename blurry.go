@@ -25,8 +25,6 @@ func (b BlurryDetection) Detect(ImagePath string) (BlurryDetection, error) {
 
 	output, err := b.run(ImagePath)
 	if err != nil {
-		fmt.Println(err.Error())
-
 		return b, err
 	}
 
@@ -49,7 +47,7 @@ func (b BlurryDetection) commandAvailable() bool {
 }
 
 func (b BlurryDetection) validate(ImagePath string) bool {
-	return len(strings.Split(ImagePath, " ")) != 1
+	return len(strings.Split(ImagePath, " ")) == 1
 }
 
 func (b BlurryDetection) run(ImagePath string) (string, error) {
